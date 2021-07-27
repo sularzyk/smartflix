@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.omdbapi.com/?apikey=80bc0ddf&t=Hulk
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 27 Jul 2021 13:25:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - public, max-age=86400
+      Expires:
+      - Mon, 26 Jul 2021 14:41:04 GMT
+      Last-Modified:
+      - Mon, 26 Jul 2021 13:41:04 GMT
+      Vary:
+      - "*, Accept-Encoding"
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - HIT
+      Age:
+      - '85453'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6756315f9b4e0601-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Title":"Hulk","Year":"2003","Rated":"PG-13","Released":"20 Jun 2003","Runtime":"138
+        min","Genre":"Action, Sci-Fi","Director":"Ang Lee","Writer":"Stan Lee, Jack
+        Kirby, James Schamus","Actors":"Eric Bana, Jennifer Connelly, Sam Elliott","Plot":"Bruce
+        Banner, a genetics researcher with a tragic past, suffers an accident that
+        causes him to transform into a raging green monster when he gets angry.","Language":"English,
+        Spanish","Country":"United States","Awards":"3 wins & 14 nominations","Poster":"https://m.media-amazon.com/images/M/MV5BMzQwZDg1MGEtN2E5My00ZDJlLWI4MzItM2U2MjJhYzlkNmEzXkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_SX300.jpg","Ratings":[{"Source":"Internet
+        Movie Database","Value":"5.6/10"},{"Source":"Rotten Tomatoes","Value":"62%"},{"Source":"Metacritic","Value":"54/100"}],"Metascore":"54","imdbRating":"5.6","imdbVotes":"255,439","imdbID":"tt0286716","Type":"movie","DVD":"15
+        Jun 2012","BoxOffice":"$132,177,234","Production":"Marvel Films","Website":"N/A","Response":"True"}'
+  recorded_at: Tue, 27 Jul 2021 13:25:17 GMT
+recorded_with: VCR 6.0.0

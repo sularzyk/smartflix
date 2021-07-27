@@ -4,21 +4,17 @@ class OmdbMovieCreator
 
   include HTTParty
 
-  omdb_api_key = ENV['OMDB_API_KEY']
-  base_uri "http://www.omdbapi.com/?apikey=#{omdb_api_key}"
-
-  def initialize(title)
-    @title = title
+  def initialize(omdb_response)
+    @omdb_response = omdb_response
   end
 
   def call
     add_movie_to_the_db
   end
 
-  def prepare_data_from_api
-    data = self.class.get('&t', query: {t: title})
-    data.parsed_response.transform_keys(&:underscore).symbolize_keys.except(:response)
-  end
+  private
+
+  attr_reader :omdb_response
 
   def add_movie_to_the_db
     movie_data = prepare_data_from_api
@@ -27,8 +23,8 @@ class OmdbMovieCreator
     movie.save!
   end
 
-  private
-
-  attr_reader :title
+  def prepare_data_from_api
+    omdb_response.parsed_response.transform_keys(&:underscore).symbolize_keys.except(:response)
+  end
 
 end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'httparty'
 
 class OmdbApiConnector
-
   include HTTParty
 
   omdb_api_key = ENV['OMDB_API_KEY']
@@ -11,16 +12,8 @@ class OmdbApiConnector
     @title = title
   end
 
-  def call
-    connect_with_api
-  end
-
-  private
-
-  attr_reader :title
-
-  def connect_with_api
-    self.class.get('&t', query: {t: title})
+  def get_movie_by_title
+    self.class.get('&t', query: { t: @title })
   end
 
 end

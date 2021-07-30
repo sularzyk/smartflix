@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 VCR.configure do |c|
   # This is the directory where VCR will store its "cassettes", i.e. its
   # recorded HTTP interactions.
-  c.cassette_library_dir = "spec/cassettes"
+  c.cassette_library_dir = 'spec/cassettes'
 
   # This line makes it so VCR and WebMock know how to talk to each other.
   c.hook_into :webmock
@@ -13,5 +15,5 @@ VCR.configure do |c|
   # ChromeDriver will make requests to chromedriver.storage.googleapis.com
   # to (I believe) check for updates. These requests will just show up as
   # noise in our cassettes unless we tell VCR to ignore these requests.
-  #c.ignore_hosts "chromedriver.storage.googleapis.com"
+  # c.ignore_hosts "chromedriver.storage.googleapis.com"
 end

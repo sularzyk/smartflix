@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'httparty'
 
 class OmdbMovieCreator
-
   include HTTParty
 
   def initialize(omdb_response)
@@ -26,5 +27,4 @@ class OmdbMovieCreator
   def prepare_data_from_api
     omdb_response.parsed_response.transform_keys(&:underscore).symbolize_keys.except(:response)
   end
-
 end

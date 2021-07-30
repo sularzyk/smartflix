@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# comment
 class MoviesController < ApplicationController
   def show
     title = params[:title]

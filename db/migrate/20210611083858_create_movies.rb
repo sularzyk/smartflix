@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMovies < ActiveRecord::Migration[6.1]
   def change
     create_table :movies do |t|
@@ -26,9 +28,8 @@ class CreateMovies < ActiveRecord::Migration[6.1]
       t.string :production
       t.string :website
 
-      t.index ["title"], name: "index_movies_on_title"
+      t.index ['title'], name: 'index_movies_on_title'
       t.timestamps
     end
   end
 end
-

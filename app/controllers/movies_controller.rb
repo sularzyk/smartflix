@@ -3,7 +3,7 @@
 # comment
 class MoviesController < ApplicationController
   def show
-    title = params[:title]
+    title = params[:title].split.map(&:capitalize).join(' ')
     movie = Movie.find_by(title: title)
     if movie
       render json: movie

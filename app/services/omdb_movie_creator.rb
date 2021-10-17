@@ -18,7 +18,8 @@ class OmdbMovieCreator
   attr_reader :omdb_response
 
   def log
-    Rails.logger.warn("Movie does not exist")
+    title = omdb_response['Title']
+    Rails.logger.warn("Movie #{title} does not exist")
   end
 
   def add_movie_to_the_db

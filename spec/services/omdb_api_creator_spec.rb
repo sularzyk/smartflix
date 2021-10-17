@@ -18,18 +18,20 @@ RSpec.describe OmdbMovieCreator do
 
     context 'when a movie does not exist' do
       let(:omdb_response) { OmdbApiConnector.new('pnfbgiorgbi').get_movie_by_title }
+      let(:title) { omdb_response['Title'] }
 
       it 'does not add movie to db' do
-        VCR.use_cassette('fail_movie', record: :new_episodes) do
+        VCR.use_cassette('nonexistent_movie', record: :new_episodes) do
           expect { omdb_movie_creator }.not_to change(Movie, :count)
         end
       end
 
-      # it 'logs a warning' do
-      #   VCR.use_cassette('fail_movie', record: :new_episodes) do
-      #     expect(Rails.logger).to receive('warn').with('Movie does not exist')
-      #   end
-      # end
+      it 'logs a warning' do
+        VCR.use_cassette('nonexistent_movie', record: :new_episodes) do
+          expect(Rails.logger).to receive(:warn).with("Movie #{title} does not exist")
+          subject
+        end
+      end
     end
 
   end

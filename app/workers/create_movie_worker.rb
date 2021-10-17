@@ -6,6 +6,6 @@ class CreateMovieWorker
 
   def perform(title)
     api_response = OmdbApiConnector.new(title).get_movie_by_title
-    OmdbMovieCreator.new(api_response).call
+    OmdbMovieCreator.new(api_response).call unless api_response.has_value?('False')
   end
 end

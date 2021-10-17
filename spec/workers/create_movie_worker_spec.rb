@@ -34,12 +34,13 @@ RSpec.describe CreateMovieWorker, type: :worker do
                           "Website"=>"N/A",
                           "Response"=>"True"} }
 
-    it 'connects with OmdbApi' do
+    it 'connects with OmdbApi and it creates movie in db' do
       allow(OmdbApiConnector).to receive(:new).with('Hulk').and_return(omdb_api_connector)
       expect(omdb_api_connector).to receive(:get_movie_by_title).and_return(api_response)
       allow(OmdbMovieCreator).to receive(:new).with(api_response).and_return(omdb_movie_creator)
       expect(omdb_movie_creator).to receive(:call)
       subject
     end
+
   end
 end

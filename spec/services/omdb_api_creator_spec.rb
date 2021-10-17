@@ -21,9 +21,15 @@ RSpec.describe OmdbMovieCreator do
 
       it 'does not add movie to db' do
         VCR.use_cassette('fail_movie', record: :new_episodes) do
-          expect { omdb_movie_creator }.not_to change(Movie, :count) unless omdb_response.has_value?('False')
+          expect { omdb_movie_creator }.not_to change(Movie, :count)
         end
       end
+
+      # it 'logs a warning' do
+      #   VCR.use_cassette('fail_movie', record: :new_episodes) do
+      #     expect(Rails.logger).to receive('warn').with('Movie does not exist')
+      #   end
+      # end
     end
 
   end

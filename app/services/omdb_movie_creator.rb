@@ -10,12 +10,16 @@ class OmdbMovieCreator
   end
 
   def call
-    add_movie_to_the_db
+    omdb_response['Response'] == 'True' ? add_movie_to_the_db : log
   end
 
   private
 
   attr_reader :omdb_response
+
+  def log
+    Rails.logger.warn("Movie does not exist")
+  end
 
   def add_movie_to_the_db
     movie_data = prepare_data_from_api
